@@ -11,6 +11,6 @@ public class Cards {
         UserInterface ui = new UserInterface(scanner);
         GUI gui = new GUI();
         gui.start();
-        ui.start();
+        // ui.start();
     }
 }

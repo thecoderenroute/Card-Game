@@ -1,9 +1,12 @@
 package UI;
 
+import Elements.Card;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -39,8 +42,47 @@ public class GUI extends Application {
 
         Scene scene = new Scene(layout);
 
+        BorderPane gameBoard = this.getGame();
+
+        play.setOnAction((event) -> {
+            gameState = gameStates.playing;
+            layout.setCenter(gameBoard);
+        });
+
+        exit.setOnAction((event) -> {
+            System.exit(0);
+        });
+
         stage.setScene(scene);
         stage.show();
+    }
+
+    private BorderPane getGame() {
+
+        BorderPane board = new BorderPane();
+        board.setPadding(new Insets(20, 20, 20, 20));
+
+        Label centre = new Label("Hand at Play");
+        Label bottom = new Label("You");
+        Label top = new Label("North");
+        Label right = new Label("East");
+        Label left = new Label("West");
+
+        board.setCenter(centre);
+        board.setBottom(bottom);
+        board.setTop(top);
+        board.setLeft(left);
+        board.setRight(right);
+
+        BorderPane.setAlignment(centre, Pos.CENTER);
+        BorderPane.setAlignment(bottom, Pos.BOTTOM_CENTER);
+        BorderPane.setAlignment(top, Pos.TOP_CENTER);
+        BorderPane.setAlignment(right, Pos.CENTER_RIGHT);
+        BorderPane.setAlignment(left, Pos.CENTER_LEFT);
+
+        board.setCenter(new Card('H', '9').getImg());
+
+        return board;
     }
 
     private VBox getMenu() {
@@ -64,13 +106,6 @@ public class GUI extends Application {
             menu.getChildren().add(button);
         }
 
-        play.setOnAction((event) -> {
-            gameState = gameStates.playing;
-        });
-
-        exit.setOnAction((event) -> {
-            System.exit(0);
-        });
 
         menu.setAlignment(Pos.CENTER);
 

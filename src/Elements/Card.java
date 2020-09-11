@@ -23,7 +23,7 @@ public class Card {
         };
         this.value = Integer.toString(this.valueNum).charAt(0);
 
-        image = new Image("file:" + this.value + this.symbol);
+        image = new Image("file:" + this.value + this.symbol + ".png");
 
         this.setProperSymbol();
         this.setPrintableCard();
@@ -52,8 +52,8 @@ public class Card {
                 default -> -1;
             };
         }
-
-        image = new Image("file:" + this.value + this.symbol);
+        String file = "file:res/allCards/" + this.value + this.symbol + ".png";
+        image = new Image(file);
 
         this.setProperSymbol();
         this.setPrintableCard();
@@ -125,8 +125,8 @@ public class Card {
     public ImageView getImg() {
         ImageView graphicRep = new ImageView(image);
 
-        graphicRep.setFitHeight(352);
-        graphicRep.setFitWidth(230);
+        graphicRep.setFitHeight(176);
+        graphicRep.setFitWidth(115);
 
         return graphicRep;
     }
