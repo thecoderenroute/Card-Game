@@ -1,15 +1,19 @@
+package Elements;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
 
     private final int numberOfPlayers;
-    private String[] allCards;
-    private ArrayList<String>[] playerDecks;
-    private int cardsLeft;
+    // private final String[] allCards;
+    private final Card[] allTheCards;
+    private final ArrayList<Card>[] playerDecks;
+    // private int cardsLeft;
 
     public Deck(int numberOfPlayers) { // Initializations
-        allCards = new String[52];
+        // allCards = new String[52];
+        this.allTheCards = new Card[52];
         this.numberOfPlayers = numberOfPlayers;
         playerDecks = new ArrayList[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -23,16 +27,10 @@ public class Deck {
             int symbolAssigner, valueAssigner;
             symbolAssigner = i / 13; // first 13 cards will be assigned 0 (h), the next will be assigned 1 (d)
             valueAssigner = i % 13; // first card is 2, second is 3 till 13th card is 14(A) and then reset back to 2 for next symbol
-            allCards[i] = switch (symbolAssigner) {
-                case 0 -> "h";
-                case 1 -> "d";
-                case 2 -> "s";
-                case 3 -> "c";
-                default -> "n";
-            };
-            allCards[i] += valueAssigner + 2;
+
+            allTheCards[i] = new Card(symbolAssigner, valueAssigner + 2);
+
         }
-        cardsLeft = 52; // cardsLeft in deck (initially 52)
     }
 
     public void deal() { //deals all cards among the numberOfPlayers
@@ -40,7 +38,7 @@ public class Deck {
         for (int i = 0; i < 52; i++) {
             int player = r.nextInt(numberOfPlayers); // randomly selects a player
             if (playerDecks[player].size() < 13) {
-                playerDecks[player].add(allCards[i]); // assigned card to said player
+                playerDecks[player].add(allTheCards[i]); // assigned card to said player
             } else {
                 i--;
             }
@@ -68,9 +66,9 @@ public class Deck {
     }
      */
 
-    public ArrayList<String>[] getPlayerDecks() {
+    public ArrayList<Card>[] getPlayerDecks() {
         return playerDecks;
-    } // returns an Array of ArrayLists containing each Player's cards
+    } // returns an Array of ArrayLists containing each Elements.Player's cards
 
     public void resetDeck() { // resets the full deck to it's original 52 cards and empties all the player's decks
         createDeck();
@@ -79,12 +77,12 @@ public class Deck {
         }
     }
 
-    private void remove(int index) { // removes card from the full deck
+    /*private void remove(int index) { // removes card from the full deck
         if (cardsLeft - 1 - index >= 0)
             System.arraycopy(this.allCards, index + 1, this.allCards, index, cardsLeft - 1 - index);
         this.allCards[cardsLeft - 1] = null;
         this.cardsLeft--;
-    }
+    }*/
 
     /*
 
@@ -115,4 +113,28 @@ public class Deck {
     }
      // returns all the cards
     */
+
+    /*public static String getCardGUI(@NotNull String card) {
+
+        char shape = card.charAt(0);
+        String number = card.substring(1);
+        switch (Integer.parseInt(number)) {
+            case 11:
+                number = "J";
+                break;
+            case 12:
+                number = "Q";
+                break;
+            case 13:
+                number = "K";
+                break;
+            case 14:
+                number = "A";
+                break;
+        }
+
+        System.out.println("Final Card is: " + number + shape);
+
+        return number + shape;
+    }*/
 }

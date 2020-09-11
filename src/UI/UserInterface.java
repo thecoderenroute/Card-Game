@@ -1,10 +1,14 @@
+package UI;
+
+import Elements.Deck;
+import Main.Game;
+
 import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner scanner;
-    private Deck deck;
-    private Game game;
+    private final Scanner scanner;
+
 
     public UserInterface(Scanner sc) { // Initializations
         this.scanner = sc;
@@ -13,8 +17,10 @@ public class UserInterface {
     public void start() { // starts the game
         while (true) { // Infinite loop till player chooses to exit
             char choice;
-            System.out.println("Please select the Game you want to play");
-            System.out.println("1. M.S. Hearts\nX. exit"); //Game 2 is not yet developed
+            Deck deck;
+            Game game;
+            System.out.println("Please select the Main.Game you want to play");
+            System.out.println("1. M.S. Hearts\nX. exit"); //Main.Game 2 is not yet developed
             System.out.print("\nEnter your Choice: [1/X]");
             choice = scanner.nextLine().charAt(0);
             if (choice == '1') { // if player chooses to play
@@ -25,9 +31,10 @@ public class UserInterface {
                 System.out.println("Exiting");
                 break;
             }
-            if(scanner.hasNextLine()){
+            if (scanner.hasNextLine()) {
                 scanner.nextLine();
             }
         }
     }
+
 }

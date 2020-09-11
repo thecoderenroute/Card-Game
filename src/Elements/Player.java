@@ -1,14 +1,16 @@
+package Elements;
+
 import java.util.ArrayList;
 
 public class Player {
 
-    private ArrayList<String> playerCards; // player's deck
+    private ArrayList<Card> playerCards; // player's deck
     private final String name;
     private int points;
     private final int id;
-    private boolean isBot; // whether player is a bot or person
+    private final boolean isBot; // whether player is a bot or person
 
-    public Player(ArrayList<String> cards, String name, int id, boolean isBot) { // Initialization
+    public Player(ArrayList<Card> cards, String name, int id, boolean isBot) { // Initialization
         this.playerCards = cards;
         this.points = 0;
         this.name = name;
@@ -24,15 +26,15 @@ public class Player {
         return isBot;
     }
 
-    public void setPlayerCards(ArrayList<String> playerCards) { // gives the player a fresh deck of cards (implemented after every round)
+    public void setPlayerCards(ArrayList<Card> playerCards) { // gives the player a fresh deck of cards (implemented after every round)
         this.playerCards = playerCards;
     }
 
-    public void removeCard(int index){ // removes said card from player's deck
+    public void removeCard(int index) { // removes said card from player's deck
         playerCards.remove(index);
     }
 
-    public ArrayList<String> getPlayerCards() { // returns an ArrayList of player's deck of cards
+    public ArrayList<Card> getPlayerCards() { // returns an ArrayList of player's deck of cards
         return playerCards;
     }
 
@@ -59,9 +61,11 @@ public class Player {
         return points;
     }
 
+
+
     @Override
     public String toString() { // default method
-        return "Player{" +
+        return "Elements.Player{" +
                 "playerCards=" + playerCards +
                 ", name='" + name + '\'' +
                 ", points=" + points +

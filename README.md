@@ -1,4 +1,4 @@
-# Card-Game
+# Card-Main.Game
 
 MS Hearts the classic card game in the terminal format.
 The Basic games of the rules are:
