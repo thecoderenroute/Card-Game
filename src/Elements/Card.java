@@ -83,14 +83,7 @@ public class Card {
         return this.properSymbol;
     }
 
-    private void setPrintableCard() { // returns a String with a beautified format of card
-        // h10 becomes 10 of Hearts & s14 becomes Ace of Spades (More info in legend)
-
-        // int[] symbolsAndValues = getSymbolAndValue(card);
-        // int symbol = symbolsAndValues[0];
-        // int symbol = card.getSymbolNum();
-        // int value = symbolsAndValues[1];
-        // int value = card.getValueNum();
+    private void setPrintableCard() {
         this.properCard = switch (this.valueNum) {
             case 2, 3, 4, 5, 6, 7, 8, 9, 10 -> value + " of ";
             case 11 -> "Jack of ";
@@ -120,13 +113,13 @@ public class Card {
         return valueNum;
     }
 
-    public char getSymbol() {
+    /*public char getSymbol() {
         return symbol;
     }
 
     public char getValue() {
         return value;
-    }
+    }*/
 
 
     public ImageView getImg() {
